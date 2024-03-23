@@ -1,0 +1,41 @@
+.profile-block {
+  margin-left: 120px; 
+  width: 420px;
+  padding: 50px;
+  // height: 150px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow:  1px 2px rgba(214,219,226,.5), 0 1px 2px rgba(214,219,226,.5);
+  
+  .block-item {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    input {
+      appearance: textfield;
+      -moz-appearance: textfield;
+      -webkit-appearance: textfield;
+      height: 30px;
+      padding: 2px;
+      border: 1px solid #d3d3d3;
+      border-radius: 5px;
+      font-size: 16px;
+      width: 150px;
+      outline: none;
+    }
+    button {
+      outline: none;
+      border: none;
+      padding: 5px 10px;
+      background-color: #1976d2;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      position: absolute;
+      top: 10px;
+      right: 0;
+    }
+  }
+}

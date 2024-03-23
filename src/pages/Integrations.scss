@@ -1,0 +1,105 @@
+.integrations-block {
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  .block-item {
+    width: 30%;
+    height: fit-content;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 15px;
+    padding: 20px;
+    .service-title {
+      font-size: 19px;
+    }
+    .connected {
+      font-size: 15px;
+      color: #3399FF;
+    }
+    .unconnected {
+      font-size: 15px;
+      color: #c5221f;
+    }
+  }
+}
+.integration-modal {
+  display: none; 
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4);
+  .integration-modal-block {
+    width: 0;
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    right: 0;
+    background-color: #ebeef2;
+    transition: 0.5s;
+    .modal-content {
+      margin: 50px 30px;
+      .integration-block {
+        margin: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .block-item {
+          cursor: pointer;
+          width: 30%;
+          height: fit-content;
+          background-color: #fff;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          gap: 15px;
+          padding: 20px;
+        }
+      }
+      .subintegration {
+        padding: 10px;
+        display: none;
+      }
+      input {
+        // width: 320px;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.5;
+        padding: 8px 12px;
+        border-radius: 8px;
+        color: #1C2025;
+        background: '#fff';
+        border: 1px solid #DAE2ED;
+        box-shadow: 0px 2px 4px rgba(0,0,0, 0.05);
+        &:hover {
+          border-color: #3399FF;
+        }
+    
+        &:focus {
+          border-color: #3399FF;
+          box-shadow: 0 0 0 3px #b6daff;
+        }
+    
+        // firefox
+        &:focus-visible {
+          outline: 0;
+        }
+      }
+    }
+  }
+  
+}

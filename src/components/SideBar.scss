@@ -1,0 +1,87 @@
+.sidebar {
+  background-color: #1f2937;
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  color: #e9ecef;
+  z-index: 15;
+  font-family: "Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+  .content-header {
+    background-color: #232e3e;
+    font-size: 18px;
+    padding: 0 20px;
+    height: 64px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: #e9ecef!important;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+  }
+  .content-side {
+    padding-top: 20px;
+    .nav-main {
+      .dropdown {
+        padding-left: 46px;
+        background-color: #1c2531;
+        display: none;
+        .dropdown-item {
+          padding: 8px 0px;
+          cursor: pointer;
+          list-style: none;
+          .dropdown-item-link {
+            text-decoration: none;
+            color: #8093ad;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 18px;
+            transition: color 0.3s ease;  
+          }
+          &:hover {
+            .dropdown-item-link {
+              color: #f1f1f1;
+            }
+          }
+        }
+      }
+      .nav-main-item {
+        cursor: pointer;
+        // padding: 8px 20px;
+        .nav-main-link {
+          display: block;
+          width: 100%;
+          padding: 8px 20px;
+          text-decoration: none;
+          color: #9faec1;
+          font-weight: 500;
+          font-size: 15px;
+          line-height: 18px;
+          transition: color 0.3s ease;
+        }
+        &:hover {
+          background-color: #212529;
+          .nav-main-link {
+            svg {
+              color: #f1f1f1;
+            }
+          }
+        }
+      }
+      .nav-main-item.active {
+        .nav-main-link {
+          color: #f1f1f1;
+        }
+      }
+      #nav-profile.nav-main-item {
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+      }
+    }
+  }
+}

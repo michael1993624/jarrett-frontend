@@ -18,11 +18,12 @@ const Login = () => {
   const signin = async () => {
     try {
       const data = await apis.login(userInput);
+
       if (data.success) {
         dispatch(setToken(data.accessToken));
         navigate("/dashboard");
       } else {
-        alert(data.message);
+        // alert(data.message);
       }
     } catch (err) {
       console.log(err);

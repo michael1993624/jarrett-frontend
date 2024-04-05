@@ -37,6 +37,11 @@ const TopBar = () => {
         dispatch(setAccounts(response.accounts));
       } else {
         alert(response.message);
+        localStorage.removeItem(ACCESS_TOKEN);
+        localStorage.removeItem(ACCOUNT_ID);
+        navigate("/signin");
+        
+        // alert("response.message");
       }
     } catch (err) {
       console.log(err);

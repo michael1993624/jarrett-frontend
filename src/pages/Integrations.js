@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import LoadingButton from "@mui/lab/LoadingButton";
 import ShopifyDialog from "../components/Dialogs/ShopifyDialog";
 import GoogleAdsDialog from "../components/Dialogs/GoogleAdsDialog";
+import FacebookAdsDialog from "../components/Dialogs/FacebookAdsDialog";
 import { apis } from "../apis";
 import { FACEBOOK_TOKEN, GOOGLE_TOKEN } from "../libs/contants";
 
@@ -20,7 +21,9 @@ const IntegrationsBlock = () => {
   const [integrations, setIntegrations] = useState([null, null, null]);
   const [openShopify, setOpenShopify] = useState(false);
   const [openGoogleAds, setOpenGoogleAds] = useState(false);
+  const [openFacebookAds, setOpenFacebookAds] = useState(false);
   const [googleAdsCustomers, setGoogleAdsCustomers] = useState([]);
+  const [facebookAdsCustomers, setFacebookAdsCustomers] = useState([]);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [facebookLoading, setFacebookLoading] = useState(false);
 
@@ -43,11 +46,10 @@ const IntegrationsBlock = () => {
   const fetchGoogleAdsUserData = async (token) => {
     try {
       setGoogleLoading(true);
-      const response = await apis.getAdsCustomer({ token: token });
+      const response = await apis.getGoogleAdsCustomer({ token: token });
       if (response.success) {
         setGoogleAdsCustomers(response.list);
         setOpenGoogleAds(true);
-        localStorage.removeItem(FACEBOOK_TOKEN)
       }
       setGoogleLoading(false);
     } catch (error) {
@@ -56,21 +58,36 @@ const IntegrationsBlock = () => {
     }
   };
 
-  const fetchFacebookData = async (token) => {  
+  const fetchFacebookAdsUserData = async (token) => {
     try {
-      setFacebookLoading(true)
-      const response = await apis.connectFacebookAds(account, { token: token})
-      if(response.success) {
-        let temp = [...integrations]
-        temp[2] = response.facebook;
-        setIntegrations(temp)
+      setFacebookLoading(true);
+      const response = await apis.getFacebookAdsCustomer({ token: token });
+      if (response.success) {
+        setFacebookAdsCustomers(response.list);
+        setOpenFacebookAds(true);
       }
       setFacebookLoading(false);
     } catch (error) {
-      setFacebookLoading(false)
-      console.error('Error fetching data:', error);
+      setFacebookLoading(false);
+      console.error("Error fetching data:", error);
     }
-};
+  };
+
+  // const fetchFacebookData = async (token) => {
+  //   try {
+  //     setFacebookLoading(true);
+  //     const response = await apis.connectFacebookAds(account, { token: token });
+  //     if (response.success) {
+  //       let temp = [...integrations];
+  //       temp[2] = response.facebook;
+  //       setIntegrations(temp);
+  //     }
+  //     setFacebookLoading(false);
+  //   } catch (error) {
+  //     setFacebookLoading(false);
+  //     console.error("Error fetching data:", error);
+  //   }
+  // };
 
   const AuthProvider = (provider) => {
     if (provider == "google") {
@@ -90,8 +107,7 @@ const IntegrationsBlock = () => {
 
   useEffect(() => {
     if (facebook_access_token) {
-      console.log("here")
-      fetchFacebookData(facebook_access_token);
+      fetchFacebookAdsUserData(google_access_token);
     }
   }, [facebook_access_token]);
 
@@ -222,6 +238,18 @@ const IntegrationsBlock = () => {
           setGoogleAds={(googleId) => {
             let temp = [...integrations];
             temp[1] = googleId;
+            setIntegrations(temp);
+          }}
+        />
+      ) : null}
+      {openFacebookAds ? (
+        <FacebookAdsDialog
+          open={openFacebookAds}
+          setOpen={setOpenFacebookAds}
+          customers={facebookAdsCustomers}
+          setFacebookAds={(facebooId) => {
+            let temp = [...integrations];
+            temp[2] = facebooId;
             setIntegrations(temp);
           }}
         />

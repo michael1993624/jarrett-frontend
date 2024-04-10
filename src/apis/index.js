@@ -53,7 +53,8 @@ const getIntegrations = (id) => api.get(`/integration/${id}`);
 const connectShopify = (accountId, data) => api.post(`/connect/${accountId}/shopify`, data);
 const getPrediction = (accountId) => api.get(`/prediction/${accountId}`);
 const predict = (accountId, data) => api.post(`/prediction/${accountId}`, data);
-const getAdsCustomer = (data) => api.post('/get_customer', data);
+const getGoogleAdsCustomer = (data) => api.post('/get_google_customer', data);
+const getFacebookAdsCustomer = (data) => api.post('/get_facebook_customer', data);
 const connectGoogleAds = (accountId, data) => api.post(`/connect/${accountId}/google_ads`, data);
 const connectFacebookAds = (accountId, data) => api.post(`/connect/${accountId}/facebook_ads`, data);
 
@@ -68,8 +69,9 @@ export const apis = {
     getIntegrations,
     connectShopify,
     getPrediction,
+    getFacebookAdsCustomer,
     predict,
-    getAdsCustomer,
+    getGoogleAdsCustomer,
     connectGoogleAds,
     connectFacebookAds
 }

@@ -73,22 +73,6 @@ const IntegrationsBlock = () => {
     }
   };
 
-  // const fetchFacebookData = async (token) => {
-  //   try {
-  //     setFacebookLoading(true);
-  //     const response = await apis.connectFacebookAds(account, { token: token });
-  //     if (response.success) {
-  //       let temp = [...integrations];
-  //       temp[2] = response.facebook;
-  //       setIntegrations(temp);
-  //     }
-  //     setFacebookLoading(false);
-  //   } catch (error) {
-  //     setFacebookLoading(false);
-  //     console.error("Error fetching data:", error);
-  //   }
-  // };
-
   const AuthProvider = (provider) => {
     if (provider == "google") {
       let url = process.env.REACT_APP_SERVER + "/oauth2callbackurl";
@@ -107,7 +91,7 @@ const IntegrationsBlock = () => {
 
   useEffect(() => {
     if (facebook_access_token) {
-      fetchFacebookAdsUserData(google_access_token);
+      fetchFacebookAdsUserData(facebook_access_token);
     }
   }, [facebook_access_token]);
 
